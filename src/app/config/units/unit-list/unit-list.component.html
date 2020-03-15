@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewUnit()">Ajouter une nouvelle</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-unit-item
+      *ngFor="let unitEl of units; let i = index"
+      [unit]="unitEl"
+      [index]="i"></app-unit-item>
+  </div>
+</div>

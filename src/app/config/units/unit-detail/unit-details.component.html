@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ unit.name + ' (' + unit.symbol + ')' }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group" appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Gérer <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer;" (click)="onEditUnit()">Modifier la recette</a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteUnit()">Supprimer la recette</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
