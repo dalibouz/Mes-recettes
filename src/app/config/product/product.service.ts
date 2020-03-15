@@ -8,14 +8,26 @@ export class ProductService {
   productsChanged = new Subject<ProductModel[]>();
 
   private products: ProductModel[] = [
-    new ProductModel('Tomate concerve', '123456', 'Concerve', 'ttt', [
-      new UnitOfMeasureModel('Kilogramme', 'kg'),
-      new UnitOfMeasureModel('Gramme', 'g')
-    ]),
-    new ProductModel('Confiture', '123475', 'Concerve', 'ttt', [
-      new UnitOfMeasureModel('Kilogramme', 'kg'),
-      new UnitOfMeasureModel('Gramme', 'g')
-    ])
+    new ProductModel(
+      'Tomate concerve',
+      '123456',
+      'Concerve',
+      'https://www.produits-italiens.fr/4125-large_default/pulpe-de-tomates-100-italiennes.jpg',
+      [
+        new UnitOfMeasureModel('Kilogramme', 'kg'),
+        new UnitOfMeasureModel('Gramme', 'g')
+      ]
+    ),
+    new ProductModel(
+      'Confiture',
+      '123475',
+      'Concerve',
+      'https://www.bonnemaman.ch/uploads/catalogues_price_image/confiturePackaging-fraise.jpg',
+      [
+        new UnitOfMeasureModel('Kilogramme', 'kg'),
+        new UnitOfMeasureModel('Gramme', 'g')
+      ]
+    )
   ];
 
   constructor() {}

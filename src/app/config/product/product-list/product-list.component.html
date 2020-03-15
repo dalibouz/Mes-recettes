@@ -6,10 +6,9 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    test
-    <!--<app-unit-item-->
-      <!--*ngFor="let unitEl of units; let i = index"-->
-      <!--[unit]="unitEl"-->
-      <!--[index]="i"></app-unit-item>-->
+    <app-product-item
+      *ngFor="let productEl of products; let i = index"
+      [product]="productEl"
+      [index]="i"></app-product-item>
   </div>
 </div>
