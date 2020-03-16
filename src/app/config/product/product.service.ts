@@ -12,7 +12,7 @@ export class ProductService {
     new ProductModel(
       'Tomate concerve',
       'Annalisa',
-      '123456',
+      '8002560200106',
       'Concerve',
       'Tomate composition',
       'https://www.produits-italiens.fr/4125-large_default/pulpe-de-tomates-100-italiennes.jpg',
@@ -24,7 +24,7 @@ export class ProductService {
     new ProductModel(
       'Confiture',
       'Bonne Maman',
-      '123475',
+      '3608580758686',
       'Concerve',
       'confiture composition',
       'https://www.bonnemaman.ch/uploads/catalogues_price_image/confiturePackaging-fraise.jpg',
