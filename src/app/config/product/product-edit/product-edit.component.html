@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!productForm.valid">Sauvegarder
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="marque">Marque</label>
+            <input
+              type="text"
+              id="marque"
+              class="form-control"
+              formControlName="marque">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="barcode">Code barre</label>
+            <input
+              type="text"
+              id="barcode"
+              class="form-control"
+              formControlName="barcode">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="type">Type</label>
+            <input
+              type="text"
+              id="type"
+              class="form-control"
+              formControlName="type">
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="quantity">
+        <div class="col-xs-12">
+          <div class="form-group col-xs-6">
+            <label for="quantityAmout">Quantité</label>
+            <input
+              type="text"
+              id="quantityAmout"
+              formControlName="amount"
+              class="form-control">
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="quantityUnit">Unité</label>
+            <select class="form-control" name="type"
+                    formControlName="unit" id="quantityUnit">
+              <option *ngFor="let unit of units" [ngValue]="unit"> {{unit.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="composition">Composition</label>
+            <textarea
+              type="text"
+              id="composition"
+              class="form-control"
+              formControlName="composition"
+              rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imgPath">URL de l'image</label>
+            <input
+              type="text"
+              id="imgPath"
+              formControlName="imgPath"
+              class="form-control"
+              #imagePath>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

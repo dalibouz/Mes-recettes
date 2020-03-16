@@ -32,6 +32,23 @@ export class ProductService {
         new UnitOfMeasureModel('Kilogramme', 'kg'),
         2
       )
+    ),
+    new ProductModel(
+      'Ovomaltine Crunchy',
+      'Ovomaltine',
+      '3470320400052',
+      'Chocolat Tartine',
+      'piteàtartiner avec de pépites croustillantes à l\'extrait de malt d\'orge et de cacao Ovomaltine Oln rédients : ' +
+      'Pépites croustillantes à l\'extrait de malt d\'orge et de cacao Oyomaltjne [extrait de concentré (lait), cacao mai yégetales ' +
+      '(colza et palme), noise tes, phosp ate de calcium, émuls\' :lécithinàe maigre antioxydants : palmitate dascorbyfe et ' +
+      'alpha•tocophérol, arôme : vanilline. freerpasta met krokante stukjes van gerstemoutextract en cacao Ovomaltine SIn ediënten: ' +
+      'Krokante stukjes van gerstemoutextnct en cacao Ovomaltine 33%ÉerstemoutexI magere melk geconcentreerde melkserum, magere cacao ' +
+      '(1 3%), suiker,fructose, viamines (A E, C, thiamine Vitamine BI), riboflavine',
+      'https://www.cdiscount.com/pdt2/4/7/7/1/700x700/ovo7612100018477/rw/ovomaltine-ovomaltine-crunchy.jpg',
+      new QuantityModel(
+        new UnitOfMeasureModel('Gramme', 'g'),
+        360
+      )
     )
   ];
 
