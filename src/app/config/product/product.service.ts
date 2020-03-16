@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ProductModel } from '../../shared/product.model';
 import { UnitOfMeasureModel } from '../../shared/unit-of-measure.model';
+import { QuantityModel } from '../../shared/quantity.model';
 
 @Injectable()
 export class ProductService {
@@ -10,23 +11,27 @@ export class ProductService {
   private products: ProductModel[] = [
     new ProductModel(
       'Tomate concerve',
+      'Annalisa',
       '123456',
       'Concerve',
+      'Tomate composition',
       'https://www.produits-italiens.fr/4125-large_default/pulpe-de-tomates-100-italiennes.jpg',
-      [
+      new QuantityModel(
         new UnitOfMeasureModel('Kilogramme', 'kg'),
-        new UnitOfMeasureModel('Gramme', 'g')
-      ]
+        1
+      )
     ),
     new ProductModel(
       'Confiture',
+      'Bonne Maman',
       '123475',
       'Concerve',
+      'confiture composition',
       'https://www.bonnemaman.ch/uploads/catalogues_price_image/confiturePackaging-fraise.jpg',
-      [
+      new QuantityModel(
         new UnitOfMeasureModel('Kilogramme', 'kg'),
-        new UnitOfMeasureModel('Gramme', 'g')
-      ]
+        2
+      )
     )
   ];
 
