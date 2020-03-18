@@ -6,11 +6,7 @@ import { UnitOfMeasureModel } from '../../shared/unit-of-measure.model';
 export class UnitService {
   unitsChanged = new Subject<UnitOfMeasureModel[]>();
 
-  private units: UnitOfMeasureModel[] = [
-    new UnitOfMeasureModel('Litre', 'l'),
-    new UnitOfMeasureModel('Gramme', 'gr'),
-    new UnitOfMeasureModel('Kilogramme', 'kg')
-  ];
+  private units: UnitOfMeasureModel[] = [];
 
   constructor() {}
 
