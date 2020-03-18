@@ -10,13 +10,15 @@ import { ProductItemComponent } from './product-list/product-item/product-item.c
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { NgxBarcodeModule } from 'ngx-barcode';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { ProductStorageService } from './product-storage.service';
+import { SharedModule } from '../../shared/shared.module';
 
 const ENTITY_STATES = [...productRoute];
 
 @NgModule({
   imports: [RouterModule.forChild(ENTITY_STATES), BrowserModule, FormsModule, ReactiveFormsModule, NgxBarcodeModule],
   declarations: [ProductComponent, ProductListComponent, ProductItemComponent, ProductDetailComponent, ProductEditComponent],
-  providers: [ProductService],
+  providers: [ProductService, ProductStorageService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ProductModule { }
