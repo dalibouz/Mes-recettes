@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="productInStockForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!productInStockForm.valid">Sauvegarder
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-6">
+          <label for="product">Produit</label>
+          <select class="form-control" (ngModelChange)="selectProduct($event)" name="type"
+                  formControlName="product" id="product">
+            <option *ngFor="let product of products" [ngValue]="product"> {{product.name + ' ' + product.quantity + ' ' + product.barcode}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="buyDate">Date d'achat</label>
+            <input
+              type="text"
+              id="buyDate"
+              formControlName="buyDate"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="limitDate">Date limite d'utilisation</label>
+            <input
+              type="text"
+              id="limitDate"
+              class="form-control"
+              formControlName="limitDate">
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="quantity">
+        <div class="col-xs-12">
+          <div class="form-group col-xs-6">
+            <label for="quantityAmout">Quantité</label>
+            <input
+              type="text"
+              id="quantityAmout"
+              formControlName="amount"
+              class="form-control">
+          </div>
+          <div class="form-group col-xs-6">
+            <label for="quantityUnit">Unité</label>
+            <select class="form-control" name="type"
+                    formControlName="unit" id="quantityUnit">
+              <option *ngFor="let unit of units" [ngValue]="unit"> {{unit.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6" *ngIf="selectedProduct">
+          <img [src]="selectedProduct.imgPath" class="img-responsive" style="max-height: 300px;">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
