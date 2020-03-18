@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductModel } from '../../../shared/product.model';
 import { ProductService } from '../product.service';
-import { QuantityModel } from '../../../shared/quantity.model';
 
 @Component({
   selector: 'app-product-detail',
@@ -35,13 +34,6 @@ export class ProductDetailComponent implements OnInit {
   onDeleteRecipe() {
     this.productService.deleteProduct(this.id);
     this.router.navigate(['/product']);
-  }
-
-  getQuantityString(quantity: QuantityModel): string {
-    if (quantity) {
-      return quantity.amount + ' ' + quantity.unit.symbol;
-    }
-    return '';
   }
 
 }
