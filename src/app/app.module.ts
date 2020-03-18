@@ -19,6 +19,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
 import { RecipeService } from './recipes/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
 import { ConfigModule } from './config/config.module';
+import { MonStockModule } from './mon-stock/mon-stock.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ConfigModule } from './config/config.module';
     HttpClientModule,
     AppRoutingModule,
     ConfigModule,
-    SharedModule
+    SharedModule,
+    MonStockModule
   ],
   providers: [ShoppingListService, RecipeService, DataStorageService],
   bootstrap: [AppComponent]

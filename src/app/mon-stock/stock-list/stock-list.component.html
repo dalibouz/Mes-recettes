@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewRecipe()">Ajouter un nouveau produit</button>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-xs-12">
+    <app-stock-item
+      *ngFor="let product of myStock; let i = index"
+      [productInStock]="product"
+      [index]="i"></app-stock-item>
+  </div>
+</div>
+

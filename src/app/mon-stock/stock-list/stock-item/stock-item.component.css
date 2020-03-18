@@ -1,0 +1,10 @@
+.verticalLine {
+  border-right: thick solid #ddd;
+  height: 100%;
+}
+
+a.list-group-item > div {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
