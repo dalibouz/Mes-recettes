@@ -5,6 +5,7 @@ import { ProductService } from '../product.service';
 import { QuantityModel } from '../../../shared/quantity.model';
 import { UnitOfMeasureModel } from '../../../shared/unit-of-measure.model';
 import { UnitService } from '../../units/unit.service';
+import { ProductType } from '../../../shared/enums/product-type.model';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class ProductEditComponent implements OnInit {
   editMode = false;
   productForm: FormGroup;
   units: UnitOfMeasureModel[];
+  productTypeEnums = ProductType;
 
   constructor(private route: ActivatedRoute,
               private unitService: UnitService,

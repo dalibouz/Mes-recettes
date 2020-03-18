@@ -16,7 +16,7 @@ import { SharedModule } from '../../shared/shared.module';
 const ENTITY_STATES = [...productRoute];
 
 @NgModule({
-  imports: [RouterModule.forChild(ENTITY_STATES), BrowserModule, FormsModule, ReactiveFormsModule, NgxBarcodeModule],
+  imports: [RouterModule.forChild(ENTITY_STATES), BrowserModule, FormsModule, ReactiveFormsModule, NgxBarcodeModule, SharedModule],
   declarations: [ProductComponent, ProductListComponent, ProductItemComponent, ProductDetailComponent, ProductEditComponent],
   providers: [ProductService, ProductStorageService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
