@@ -1,6 +1,13 @@
-import { QuantityModel } from './quantity.model';
 import { ProductModel } from './product.model';
+import { Moment } from 'moment';
+import {QuantityModel} from './quantity.model';
 
 export class ProductInStockModel {
-  constructor(public product: ProductModel, public buyDate: Date, public limitDate: Date, public qt: QuantityModel) {}
+  constructor(
+    public id: string,
+    public buyDate: Moment,
+    public limitDate: Moment,
+    public product: ProductModel,
+    public quantity: QuantityModel
+  ) {}
 }
