@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div
+      class="btn-group pull-right"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Gérer <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a style="cursor: pointer;" (click)="onEditRecipe()">Modifier</a></li>
+        <li><a style="cursor: pointer;" (click)="onDeleteRecipe()">Supprimer</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      [src]="productInStock.product.imgPath"
+      alt="{{ productInStock.product.name }}"
+      class="img-responsive"
+      style="max-height: 300px;">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ productInStock.product.name }} {{ productInStock.product.quantity | quantityToString }}</h1>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    Quantité
+  </div>
+  <div class="col-md-2">
+    {{productInStock.quantity.amount}}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    Date d'achat
+  </div>
+  <div class="col-md-2">
+    {{productInStock.buyDate | date:'d/M/y'}}
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    Date limite d'utilisation
+  </div>
+  <div class="col-md-2">
+    {{productInStock.limitDate | date:'d/M/y'}}
+  </div>
+</div>
+

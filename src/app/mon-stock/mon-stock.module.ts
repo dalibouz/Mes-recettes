@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MonStockComponent } from './mon-stock.component';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { StockItemComponent } from './stock-list/stock-item/stock-item.component';
+import { StockDetailComponent } from './stock-detail/stock-detail.component';
+import { SharedModule } from '../shared/shared.module';
 
 const ENTITY_STATES = [...monStockRoute];
 
 @NgModule({
-  imports: [RouterModule.forChild(ENTITY_STATES), BrowserModule, FormsModule, ReactiveFormsModule],
-  declarations: [MonStockComponent, StockListComponent, StockItemComponent],
+  imports: [RouterModule.forChild(ENTITY_STATES), BrowserModule, FormsModule, ReactiveFormsModule, SharedModule],
+  declarations: [MonStockComponent, StockListComponent, StockItemComponent, StockDetailComponent],
   providers: [MonStockService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
