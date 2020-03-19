@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductModel } from '../../shared/product.model';
 import { MonStockService } from '../mon-stock.service';
 import { UnitOfMeasureModel } from '../../shared/unit-of-measure.model';
 import { ProductType } from '../../shared/enums/product-type.model';
 import { UnitService } from '../../config/units/unit.service';
-import { QuantityModel } from '../../shared/quantity.model';
 import { ProductService } from '../../config/product/product.service';
+import { ProductInStockModel } from '../../shared/product-in-stock.model';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class StockEditComponent implements OnInit {
   products: ProductModel[] = [];
   selectedProduct: ProductModel;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private unitService: UnitService,
               private productService: ProductService,
               private productInStockService: MonStockService,
@@ -33,15 +33,11 @@ export class StockEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.editMode = params['id'] != null;
-          console.log(this.productService.getProducts());
-          this.initForm();
-        }
-      );
+    this.activatedRoute.data.subscribe( ({ product }) => {
+      this.id = product.id;
+      this.editMode = product.id != null;
+      this.initForm(product);
+    });
   }
 
   onSubmit() {
@@ -54,34 +50,20 @@ export class StockEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
   }
 
-  private initForm() {
-    let productBuyDate = undefined;
-    let productLimitDate = undefined;
-    let productInStock = undefined;
-    let productInStockQuantity = new QuantityModel();
-
+  private initForm(product: ProductInStockModel) {
     if (this.editMode) {
-      const product = this.productInStockService.getProductInMyStock(this.id);
-      productBuyDate = product.buyDate;
-      productLimitDate = product.limitDate;
-      productInStock = product.product;
       this.selectedProduct = product.product;
-
-      if (product.quantity) {
-        productInStockQuantity = product.quantity;
-      }
     }
-
     this.productInStockForm = new FormGroup({
-      'buyDate': new FormControl(productBuyDate, Validators.required),
-      'limitDate': new FormControl(productLimitDate, Validators.required),
-      'product': new FormControl(productInStock, Validators.required),
+      'buyDate': new FormControl(product.buyDate, Validators.required),
+      'limitDate': new FormControl(product.limitDate, Validators.required),
+      'product': new FormControl( product.product, Validators.required),
       'quantity': new FormGroup({
-        'amount': new FormControl(productInStockQuantity.amount, Validators.required),
-        'unit': new FormControl(productInStockQuantity.unit, Validators.required)
+        'amount': new FormControl(product.quantity.amount, Validators.required),
+        'unit': new FormControl(product.quantity.unit, Validators.required)
       })
     });
   }

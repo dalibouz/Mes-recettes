@@ -40,9 +40,9 @@ export const monStockRoute: Routes = [
     path: 'mon-stock',
     component: MonStockComponent,
     children: [
-      { path: 'new', component: StockEditComponent },
-      { path: ':id', component: StockDetailComponent },
-      { path: ':id/edit', component: StockEditComponent },
+      { path: 'new', component: StockEditComponent, resolve: {product: ProductInMyStockResolve}},
+      { path: ':id', component: StockDetailComponent, resolve: {product: ProductInMyStockResolve}},
+      { path: ':id/edit', component: StockEditComponent, resolve: {product: ProductInMyStockResolve}},
     ]
   }
 ];

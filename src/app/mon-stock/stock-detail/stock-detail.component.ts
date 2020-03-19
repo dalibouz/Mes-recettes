@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MonStockService } from '../mon-stock.service';
 import { ProductInStockModel } from '../../shared/product-in-stock.model';
-import { QuantityModel } from '../../shared/quantity.model';
 
 @Component({
   selector: 'app-stock-detail',
@@ -10,29 +9,25 @@ import { QuantityModel } from '../../shared/quantity.model';
 })
 export class StockDetailComponent implements OnInit {
   productInStock: ProductInStockModel;
-  id: number;
 
   constructor(private monStockService: MonStockService,
-              private route: ActivatedRoute,
+              private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.productInStock = this.monStockService.getProductInMyStock(this.id);
-        }
-      );
+    this.activatedRoute.data.subscribe(({ product }) => {
+      this.productInStock = product;
+    });
   }
 
   onEditRecipe() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    this.router.navigate(['edit'], {relativeTo: this.activatedRoute});
   }
 
   onDeleteRecipe() {
-    this.monStockService.deleteProductInMyStock(this.id);
+    // TODO : remove me
+    // this.monStockService.deleteProductInMyStock(this.productInStock.id);
     this.router.navigate(['/mon-stock']);
   }
 
