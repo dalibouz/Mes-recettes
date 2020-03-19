@@ -44,9 +44,10 @@ export const productRoute: Routes = [
     path: 'product',
     component: ProductComponent,
     children: [
-      { path: 'new', component: ProductEditComponent },
-      { path: ':id', component: ProductDetailComponent },
-      { path: ':id/edit', component: ProductEditComponent }
+      {path: 'new', component: ProductEditComponent, resolve: {product: ProductResolve}},
+      {path: ':id', component: ProductDetailComponent, resolve: {product: ProductResolve}},
+      {path: ':id/edit', component: ProductEditComponent, resolve: {product: ProductResolve}},
+      {path: ':id/add-to-stock', component: ProductEditComponent}
     ]
   }
 ];

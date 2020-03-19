@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from '../../../shared/product.model';
 import { ProductService } from '../product.service';
 
@@ -12,18 +12,15 @@ export class ProductDetailComponent implements OnInit {
   id: number;
 
   constructor(private productService: ProductService,
+              protected activatedRoute: ActivatedRoute,
               private route: ActivatedRoute,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.product = this.productService.getProduct(this.id);
-        }
-      );
+    this.activatedRoute.data.subscribe( ({ product }) => {
+      this.product = product;
+    });
   }
 
   onEditRecipe() {
