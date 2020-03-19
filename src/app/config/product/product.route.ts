@@ -8,13 +8,12 @@ import {ProductComponent} from './product.component';
 import {ProductDetailComponent} from './product-detail/product-detail.component';
 import {ProductEditComponent} from './product-edit/product-edit.component';
 import {ProductModel} from '../../shared/product.model';
-import {ProductService} from './product.service';
 import {ProductStorageService} from './product-storage.service';
 import {QuantityModel} from '../../shared/quantity.model';
 
 @Injectable({providedIn: 'root'})
 export class ProductResolve implements Resolve<ProductModel> {
-  constructor(private service: ProductService, private productStorageService: ProductStorageService, private router: Router) {
+  constructor(private productStorageService: ProductStorageService, private router: Router) {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductModel> | Promise<ProductModel> | ProductModel {
