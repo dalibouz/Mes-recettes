@@ -2,21 +2,22 @@
   style="cursor: pointer;"
   [routerLink]="[index]"
   routerLinkActive="active"
-  class="list-group-item clearfix">
+  class="list-group-item clearfix col-md-9">
   <div class="col-md-1 verticalLine">
     <div class="text-center">
-      {{productInStock.quantity.amount}}
+      {{productInStock.quantity?.amount}}
     </div>
   </div>
   <div class="col-md-6 verticalLine">
     <div class="pull-left">
-      <h4 class="list-group-item-heading">{{ productInStock.product.name + ' ' + productInStock.product.quantity }}</h4>
-      <p class="list-group-item-text">{{ productInStock.product.barcode }}</p>
+      <h4 class="list-group-item-heading">{{ productInStock.product?.name }} {{ productInStock.product?.quantity |
+        quantityToString}}</h4>
+      <p class="list-group-item-text">{{ productInStock.product?.barcode }}</p>
     </div>
     <span class="pull-right">
         <img
-          [src]="productInStock.product.imgPath"
-          alt="{{ productInStock.product.name }}"
+          [src]="productInStock.product?.imgPath"
+          alt="{{ productInStock.product?.name }}"
           class="img-responsive"
           style="max-height: 50px;">
       </span>
