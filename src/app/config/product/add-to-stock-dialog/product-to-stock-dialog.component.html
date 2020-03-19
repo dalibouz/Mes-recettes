@@ -1,0 +1,66 @@
+<form *ngIf="product" [formGroup]="productInStockForm" (ngSubmit)="confirmAddProducttoStock()">
+  <div class="modal-header">
+    <h4 class="modal-title">Ajouter un produit dans le stock</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+    <div class="container-fluid">
+      <div class="col-md-4">
+        <div class="row" formGroupName="quantity">
+          <div class="col-xs-12">
+            <div class="form-group col-xs-6">
+              <label for="quantityAmout">Quantité</label>
+              <input
+                type="text"
+                id="quantityAmout"
+                formControlName="amount"
+                class="form-control">
+            </div>
+            <div class="form-group col-xs-6">
+              <label for="quantityUnit">Unité</label>
+              <select class="form-control" name="type"
+                      formControlName="unit" id="quantityUnit">
+                <option *ngFor="let unit of units; let i = index;" [ngValue]="unit" [attr.selected]="i == 0 ? true : null"> {{unit.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="buyDate">Date d'achat</label>
+          <input id="buyDate" formControlName="buyDate" type="text" ngbDatepicker #buyDateDp="ngbDatepicker" (click)="buyDateDp.toggle()" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="limitDate">Date limite d'utilisation</label>
+          <input id="limitDate" formControlName="limitDate" type="text" ngbDatepicker #limitDateDp="ngbDatepicker" (click)="limitDateDp.toggle()" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img
+          [src]="product.imgPath"
+          alt="{{ product.name }}"
+          class="img-responsive"
+          style="max-height: 300px;">
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <h4>{{ product.marque }}</h4>
+        </div>
+        <div class="row">
+          <h4>{{ product.name }}</h4>
+        </div>
+        <div class="row">
+          <h4>{{ product.quantity | quantityToString }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+      <span>Annuler</span>
+    </button>
+    <button type="submit" class="btn btn-primary" [disabled]="productInStockForm.invalid">
+      <span>Ajouter</span>
+    </button>
+  </div>
+</form>

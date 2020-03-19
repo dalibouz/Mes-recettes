@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductModel } from '../../../shared/product.model';
 import { ProductService } from '../product.service';
+import { ProductToStockDialogComponent } from '../add-to-stock-dialog/product-to-stock-dialog.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,7 +16,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productService: ProductService,
               protected activatedRoute: ActivatedRoute,
               private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              protected modalService: NgbModal) {
   }
 
   ngOnInit() {
@@ -23,9 +26,18 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
+  onAddToStock() {
+    const modalRef = this.modalService.open(ProductToStockDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.product = this.product;
+    modalRef.result.then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   onEditRecipe() {
     this.router.navigate(['edit'], {relativeTo: this.route});
-    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
   onDeleteRecipe() {
