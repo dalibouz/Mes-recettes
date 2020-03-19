@@ -4,10 +4,10 @@ import {QuantityModel} from './quantity.model';
 
 export class ProductInStockModel {
   constructor(
-    public id: string,
-    public buyDate: Moment,
-    public limitDate: Moment,
-    public product: ProductModel,
-    public quantity: QuantityModel
+    public id?: string,
+    public buyDate?: Moment,
+    public limitDate?: Moment,
+    public product?: ProductModel,
+    public quantity?: QuantityModel
   ) {}
 }
