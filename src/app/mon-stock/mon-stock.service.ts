@@ -16,6 +16,7 @@ export class MonStockService {
       moment(),
       moment(),
       new ProductModel(
+        '25',
         'Confiture',
         'Bonne Maman',
         '3608580758686',
