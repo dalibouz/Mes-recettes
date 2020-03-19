@@ -17,6 +17,10 @@ export class ProductStorageService {
   //   return this.http.put('https://ng-recipe-book.firebaseio.com/recipes.json', this.productService.getRecipes());
   // }
 
+  getProductById(id: string): Observable<EntityResponseType> {
+    return this.http.get<ProductModel>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+
   create(product: ProductModel): Observable<EntityResponseType> {
     return this.http.post<ProductModel>(this.resourceUrl, product, { observe: 'response' });
   }
