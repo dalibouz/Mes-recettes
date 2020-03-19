@@ -19,9 +19,8 @@ export class ProductEditComponent implements OnInit {
   units: UnitOfMeasureModel[];
   productTypeEnums = ProductType;
 
-  constructor(private route: ActivatedRoute,
-              private unitService: UnitService,
-              protected activatedRoute: ActivatedRoute,
+  constructor(private unitService: UnitService,
+              private activatedRoute: ActivatedRoute,
               private productService: ProductService,
               private router: Router) {
     this.units = this.unitService.getUnits();
@@ -45,7 +44,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], {relativeTo: this.route});
+    this.router.navigate(['../'], {relativeTo: this.activatedRoute});
   }
 
   private initForm(product: ProductModel) {
