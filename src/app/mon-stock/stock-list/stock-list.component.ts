@@ -20,7 +20,11 @@ export class StockListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.monStockStorageService.getProductsInMyStock().subscribe(
+    this.monStockStorageService
+      .getProductsInMyStock({
+        sort: ['limitDate,asc']
+      })
+      .subscribe(
       (res: HttpResponse<ProductInStockModel[]>) => {
         this.myStock = res.body;
       }
