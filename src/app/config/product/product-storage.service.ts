@@ -28,4 +28,8 @@ export class ProductStorageService {
   getProducts(): Observable<EntityArrayResponseType> {
     return this.http.get<ProductModel[]>(this.resourceUrl, {observe: 'response'});
   }
+
+  getProductsLike(stringLike: string): Observable<EntityArrayResponseType> {
+    return this.http.get<ProductModel[]>(`${this.resourceUrl}/like/${stringLike}`, {observe: 'response'});
+  }
 }

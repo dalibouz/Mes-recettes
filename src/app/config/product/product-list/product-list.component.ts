@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {ProductModel} from '../../../shared/product.model';
+import {ProductStorageService} from '../product-storage.service';
+import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-product-list',
@@ -9,6 +11,7 @@ import {ProductModel} from '../../../shared/product.model';
 })
 export class ProductListComponent implements OnInit {
 
+  inputSearch = '';
   products: ProductModel[];
 
   constructor(private productService: ProductService,
@@ -24,8 +27,17 @@ export class ProductListComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+  onFindProduct() {
+    this.productStorageService.getProductsLike(this.inputSearch).subscribe(
+      (res: HttpResponse<ProductModel[]>) => {
+        this.products = res.body;
+      }
+    );
+  }
+
+  clearFind() {
+    this.inputSearch = '';
+    this.initProducts();
   }
 
   private initProducts() {
