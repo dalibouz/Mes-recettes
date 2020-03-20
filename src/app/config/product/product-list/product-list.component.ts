@@ -1,5 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../product.service';
 import {ProductModel} from '../../../shared/product.model';
@@ -8,23 +7,17 @@ import {ProductModel} from '../../../shared/product.model';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html'
 })
-export class ProductListComponent implements OnInit, OnDestroy {
+export class ProductListComponent implements OnInit {
 
   products: ProductModel[];
-  subscription: Subscription;
 
   constructor(private productService: ProductService,
+              private productStorageService: ProductStorageService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.subscription = this.productService.productsChanged
-      .subscribe(
-        (products: ProductModel[]) => {
-          this.products = products;
-        }
-      );
-    this.products = this.productService.getProducts();
+    this.initProducts();
   }
 
   onNewUnit() {
@@ -33,5 +26,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  private initProducts() {
+    this.productStorageService.getProducts().subscribe(
+      (res: HttpResponse<ProductModel[]>) => {
+        this.products = res.body;
+      }
+    );
   }
 }

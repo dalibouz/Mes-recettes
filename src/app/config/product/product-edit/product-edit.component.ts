@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductService } from '../product.service';
 import { UnitOfMeasureModel } from '../../../shared/unit-of-measure.model';
-import { UnitService } from '../../units/unit.service';
+import { UnitsStorageService } from '../../units/units-storage.service';
 import { ProductType } from '../../../shared/enums/product-type.model';
 import { ProductModel } from '../../../shared/product.model';
+import { HttpResponse } from '@angular/common/http';
 
 
 @Component({
@@ -19,11 +20,11 @@ export class ProductEditComponent implements OnInit {
   units: UnitOfMeasureModel[];
   productTypeEnums = ProductType;
 
-  constructor(private unitService: UnitService,
-              private activatedRoute: ActivatedRoute,
+  constructor(private activatedRoute: ActivatedRoute,
               private productService: ProductService,
+              private unitStorageService: UnitsStorageService,
               private router: Router) {
-    this.units = this.unitService.getUnits();
+    this.initUnits();
   }
 
   ngOnInit() {
@@ -60,6 +61,14 @@ export class ProductEditComponent implements OnInit {
         'unit': new FormControl(product.quantity.unit, Validators.required)
       })
     });
+  }
+
+  private initUnits() {
+    this.unitStorageService.getUnits().subscribe(
+      (res: HttpResponse<UnitOfMeasureModel[]>) => {
+        this.units = res.body;
+      }
+    );
   }
 
 }
