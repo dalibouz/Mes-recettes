@@ -4,12 +4,12 @@ Une application faite maison pour gérer les recettes, le stock des produits et 
 
 ## Ecrans
 
-<img src="./screens/Recettes.PNG" width="385" height="214" style="border: 1px solid black">&ensp;
-<img src="./screens/listeDesCourses.PNG" width="385" height="214" style="border: 1px solid black">&ensp;
-<img src="./screens/ListeDesProduits.PNG" width="385" height="214" style="border: 1px solid black">&ensp;
-<img src="./screens/AddProductToStock.PNG" width="385" height="214" style="border: 1px solid black">&ensp;
-<img src="./screens/MonStock.PNG" width="385" height="214" style="border: 1px solid black">&ensp;
-<img src="./screens/MonStock2.PNG" width="385" height="214" style="border: 1px solid black">
+<kbd><img src="./screens/Recettes.PNG" width="385" height="214"></kbd>&ensp;
+<kbd><img src="./screens/listeDesCourses.PNG" width="385" height="214"></kbd>&ensp;
+<kbd><img src="./screens/ListeDesProduits.PNG" width="385" height="214"></kbd>&ensp;
+<kbd><img src="./screens/AddProductToStock.PNG" width="385" height="214"></kbd>&ensp;
+<kbd><img src="./screens/MonStock.PNG" width="385" height="214"></kbd>&ensp;
+<kbd><img src="./screens/MonStock2.PNG" width="385" height="214"></kbd>
 
 ## Development server
 
