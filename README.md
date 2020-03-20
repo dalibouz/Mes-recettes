@@ -1,10 +1,19 @@
-# MyFirstApp
+# Mes recettes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+Une application faite maison pour gérer les recettes, le stock des produits et la liste des courses.
+
+## Ecrans
+
+<img src="./screens/Recettes.PNG" width="385" height="214">&ensp;
+<img src="./screens/listeDesCourses.PNG" width="385" height="214">&ensp;
+<img src="./screens/ListeDesProduits.PNG" width="385" height="214">&ensp;
+<img src="./screens/AddProductToStock.PNG" width="385" height="214">&ensp;
+<img src="./screens/MonStock.PNG" width="385" height="214">&ensp;
+<img src="./screens/MonStock2.PNG" width="385" height="214">
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
