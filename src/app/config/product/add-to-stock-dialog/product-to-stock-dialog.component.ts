@@ -24,9 +24,7 @@ export class ProductToStockDialogComponent {
   ) {
     this.unitsStorageService.getUnits().subscribe(
       (res: HttpResponse<UnitOfMeasureModel[]>) => {
-        this.units = res.body.filter(value => {
-          return 'Pièce' === value.name;
-        });
+        this.units = res.body;
       }
     );
     this.createForm();
@@ -42,6 +40,13 @@ export class ProductToStockDialogComponent {
       buyDate: new Date(),
       limitDate: []
     });
+    // TODO : find forms invalid
+    const controls = this.productInStockForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        console.log(name);
+      }
+    }
   }
 
   clear(): void {
